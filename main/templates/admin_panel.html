@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+{% block title%}
+    Admin Panel    
+{% endblock %}
+
+{% block body %}
+<div class="container-fluid my-3">
+    <a href="{% url 'add_student' %}" class="btn btn-warning">Add Student</a>
+</div>
+<table class="table table-primary my-4 table-hover">
+    <thead>
+        <tr>
+            <th scope="col">Roll No.</th>
+            <th scope="col">Name</th>
+            <th scope="col">Hindi</th>
+            <th scope="col">English</th>
+            <th scope="col">Maths</th>
+            <th scope="col">Science</th>
+            <th scope="col">Total Marks</th>
+            <th scope="col">Precentage</th>
+            <th scope="col">Operations</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        {% for s in students %}
+        <tr>
+            <th scope="row">{{s.roll_no}}</th>
+            <td>{{s.name}}</td>
+            <td>{{s.hindi}}</td>
+            <td>{{s.english}}</td>
+            <td>{{s.maths}}</td>
+            <td>{{s.science}}</td>        
+            <td>{{s.total}}</td>
+            <td>{{s.perecent}}</td>
+            <td>
+
+
+                <a href="{% url 'edit_student' s.id %}" class="btn btn-small btn-primary" id='{s.id}'>Edit</a>
+
+
+                <a href="{% url 'delete_student' s.id %}" class="btn btn-small btn-danger" id='{s.id}'>Delete</a>
+
+            </td>
+
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}

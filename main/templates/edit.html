@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block title%}
+Edit Panel
+{% endblock %}
+
+{% block body %}
+<div class="container w-25 my-3">
+    <div class="mb-3">
+        <h4>Edit</h4>
+    </div>
+    <form action="{% url 'edit_confirm' student.id %}" method="post">
+        {% csrf_token %}
+        <div class="mb-3">
+            <label for="name" class="form-label">Student Name</label>
+            <input type="text" class="form-control" name="sname" value='{{student.name}}'>
+        </div>
+        <div class="mb-3">
+            <label for="roll-no" class="form-label">Roll Number</label>
+            <input type="text" class="form-control" name="roll-no" value='{{student.roll_no}}'>
+        </div>
+        <div class="mb-3">
+            <label for="hindi" class="form-label">Hindi</label>
+            <input type="text" class="form-control" name="hindi" value='{{student.hindi}}'>
+        </div>
+        <div class="mb-3">
+            <label for="english" class="form-label">English</label>
+            <input type="text" class="form-control" name="english" value='{{student.english}}'>
+        </div>
+        <div class="mb-3">
+            <label for="maths" class="form-label">Maths</label>
+            <input type="text" class="form-control" name="maths" value='{{student.maths}}'>
+        </div>
+        <div class="mb-3">
+            <label for="science class=" form-label">Science</label>
+            <input type="text" class="form-control" name="science" value='{{student.science}}'>
+        </div>
+
+        <input type="submit" class="form-control btn btn-success" value="Edit">
+
+    </form>
+</div>
+{% endblock %}
